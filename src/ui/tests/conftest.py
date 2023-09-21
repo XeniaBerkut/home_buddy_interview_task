@@ -29,6 +29,7 @@ def driver(logger):
     chrome_options.add_argument('--disable-notifications')
     chrome_options.add_argument('--window-size=1920,1080')
     driver = webdriver.Chrome(chrome_options)
+    driver.implicitly_wait(10)
     driver.get("https://hb-autotests.stage.sirenltd.dev/hvac")
     driver.maximize_window()
 

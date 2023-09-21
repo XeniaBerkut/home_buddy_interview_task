@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
-from ui.pages.base_page import BasePage
+from src.ui.pages.base_page import BasePage
+from src.ui.pages.project_questionnaire_form import ProjectQuestionnaireForm
 
 
 class HomePage(BasePage):
@@ -14,10 +15,9 @@ class HomePage(BasePage):
     }
 
     def fill_zip_code(self, zip_code):
-        self.logger.info("Fill zip code")
         self.driver.find_element(*self.locators['zip_code_header']).send_keys(zip_code)
 
     def submit_zip_code(self):
-        self.logger.info("Click submit button")
         parent_element = self.driver.find_element(*self.locators['header_form'])
         parent_element.find_element(*self.locators['submit_btn_header']).click()
+        return ProjectQuestionnaireForm(self.driver, self.logger)
