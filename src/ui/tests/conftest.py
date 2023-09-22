@@ -5,8 +5,10 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from src.ui.enums.urls import URLS
 
-@pytest.fixture()
+
+@pytest.fixture(scope="session")
 def logger():
     logger = logging.getLogger()
     handler = logging.StreamHandler(sys.stdout)
@@ -30,7 +32,7 @@ def driver(logger):
     chrome_options.add_argument('--window-size=1920,1080')
     driver = webdriver.Chrome(chrome_options)
     driver.implicitly_wait(10)
-    driver.get("https://hb-autotests.stage.sirenltd.dev/hvac")
+    driver.get(URLS.HOME_PAGE.value)
     driver.maximize_window()
 
     yield driver

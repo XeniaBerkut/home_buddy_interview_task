@@ -71,6 +71,12 @@ class ProjectQuestionnaireForm(BasePage):
     def fill_phone_number(self, phone):
         self.driver.find_element(*self.locators['phone']).send_keys(phone)
 
+    def click_submit_button(self):
+        self.driver.find_element(*self.locators['submit']).click()
+        thank_you_page = ThankYouPage(self.driver, self.logger)
+        thank_you_page.wait_thank_you_form()
+        return thank_you_page
+
     def click_confirm_button(self):
         self.wait_element_is_located(self.locators['phone_confirmation_header'])
         self.driver.find_element(*self.locators['submit']).click()

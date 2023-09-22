@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from src.ui.pages.base_page import BasePage
+from src.ui.pages.no_contractors_form import NoContractorsForm
 from src.ui.pages.project_questionnaire_form import ProjectQuestionnaireForm
 
 
@@ -21,3 +22,8 @@ class HomePage(BasePage):
         parent_element = self.driver.find_element(*self.locators['header_form'])
         parent_element.find_element(*self.locators['submit_btn_header']).click()
         return ProjectQuestionnaireForm(self.driver, self.logger)
+
+    def submit_zip_code_no_contractors(self):
+        parent_element = self.driver.find_element(*self.locators['header_form'])
+        parent_element.find_element(*self.locators['submit_btn_header']).click()
+        return NoContractorsForm(self.driver, self.logger)

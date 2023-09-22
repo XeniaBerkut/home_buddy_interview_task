@@ -1,0 +1,41 @@
+[
+  {
+    "test_case_title": "Phone code: New York+5, project: HVAC system, detached property",
+    "data": {
+      "zip_code": 10001,
+      "project_type": "replacement",
+      "equipment": [
+        "air_conditioner",
+        "boiler"
+      ],
+      "equipment_age": "older_than_10",
+      "fuel": "oil",
+      "property_type": "detached",
+      "square_feet": 340,
+      "name": "Johan Frame",
+      "email": "j.frame@gmail.com",
+      "state_code": "2125"
+    }
+  },
+    {
+    "test_case_title": "Phone code: Alaska+5, project: all equipment types, mobile property",
+    "data": {
+      "zip_code": 10001,
+      "project_type": "repair",
+      "equipment": [
+        "air_conditioner",
+        "boiler",
+        "central_heating",
+        "heat_pump",
+        "water_heater"
+      ],
+      "equipment_age": "less_than_5",
+      "fuel": "electricity",
+      "property_type": "mobile",
+      "square_feet": 40,
+      "name": "Johanna Smith",
+      "email": "j.smith@yahoo.com",
+      "state_code": "9075"
+    }
+  }
+]
