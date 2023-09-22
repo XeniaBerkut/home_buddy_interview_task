@@ -7,6 +7,7 @@ from src.ui.pages.no_contractors_form import NoContractorsForm
 from src.ui.pages.project_questionnaire_form import ProjectQuestionnaireForm
 from selenium.webdriver.chrome.webdriver import WebDriver
 
+
 class HomePage(BasePage):
     def __init__(self, driver: WebDriver, logger: Logger):
         super().__init__(driver, logger)
