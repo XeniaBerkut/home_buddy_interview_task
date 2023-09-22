@@ -1,12 +1,14 @@
+from logging import Logger
+
 from selenium.webdriver.common.by import By
 
 from src.ui.pages.base_page import BasePage
 from src.ui.pages.no_contractors_form import NoContractorsForm
 from src.ui.pages.project_questionnaire_form import ProjectQuestionnaireForm
-
+from selenium.webdriver.chrome.webdriver import WebDriver
 
 class HomePage(BasePage):
-    def __init__(self, driver, logger):
+    def __init__(self, driver: WebDriver, logger: Logger):
         super().__init__(driver, logger)
 
     locators = {
@@ -15,7 +17,7 @@ class HomePage(BasePage):
         'submit_btn_header': (By.TAG_NAME, "BUTTON")
     }
 
-    def fill_zip_code(self, zip_code):
+    def fill_zip_code(self, zip_code: int):
         self.driver.find_element(*self.locators['zip_code_header']).send_keys(zip_code)
 
     def submit_zip_code(self):

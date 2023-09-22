@@ -9,7 +9,7 @@ from src.ui.enums.urls import URLS
 
 
 @pytest.fixture(scope="session")
-def logger():
+def logger() -> logging.Logger:
     logger = logging.getLogger()
     handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -24,7 +24,7 @@ def driver(logger):
     logger.info("Running class setUp")
 
     chrome_options = Options()
-    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     chrome_options.add_argument('--incognito')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
@@ -39,5 +39,3 @@ def driver(logger):
 
     logger.info("Running class tearDown")
     driver.quit()
-
-

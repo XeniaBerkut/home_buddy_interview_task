@@ -1,11 +1,13 @@
-from selenium.webdriver.common.by import By
+from logging import Logger
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.webdriver import WebDriver
 from src.ui.pages.base_page import BasePage
 from src.ui.pages.thank_you_page import ThankYouPage
 
 
 class ProjectQuestionnaireForm(BasePage):
-    def __init__(self, driver, logger):
+    def __init__(self, driver: WebDriver, logger: Logger):
         super().__init__(driver, logger)
 
     locators = {
@@ -37,38 +39,38 @@ class ProjectQuestionnaireForm(BasePage):
         'submit': (By.XPATH, "//button[@type='submit']")
     }
 
-    def select_project_type(self, project_type):
+    def select_project_type(self, project_type: str):
         self.driver.find_element(*self.locators[project_type]).click()
 
     def click_next_button(self):
         self.driver.find_element(*self.locators['submit']).click()
 
-    def select_equipment_type(self, equipment):
+    def select_equipment_type(self, equipment: list):
         for item in equipment:
             self.driver.find_element(*self.locators[item]).click()
 
-    def select_hvac_system_fuel(self, fuel):
+    def select_hvac_system_fuel(self, fuel: str):
         self.driver.find_element(*self.locators[fuel]).click()
 
-    def select_equipment_age(self, age):
+    def select_equipment_age(self, age: str):
         self.driver.find_element(*self.locators[age]).click()
 
-    def select_property_type(self, property_type):
+    def select_property_type(self, property_type: str):
         self.driver.find_element(*self.locators[property_type]).click()
 
-    def fill_square_feet(self, square_feet):
+    def fill_square_feet(self, square_feet: str):
         self.driver.find_element(*self.locators['square_feet']).send_keys(square_feet)
 
     def mark_as_homeowner(self):
         self.driver.find_element(*self.locators['home_owner_true']).click()
 
-    def fill_full_name(self, name):
+    def fill_full_name(self, name: str):
         self.driver.find_element(*self.locators['full_name']).send_keys(name)
 
-    def fill_email(self, email):
+    def fill_email(self, email: str):
         self.driver.find_element(*self.locators['email']).send_keys(email)
 
-    def fill_phone_number(self, phone):
+    def fill_phone_number(self, phone: str):
         self.driver.find_element(*self.locators['phone']).send_keys(phone)
 
     def click_submit_button(self):

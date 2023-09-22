@@ -9,7 +9,7 @@ def make_email_unique(email: str) -> str:
     return first_email_part + str(time.time_ns() % 1000000) + second_email_part
 
 
-def create_unique_phone_number(code) -> str:
+def create_unique_phone_number(code: str) -> str:
     time_str = str(time.time_ns())
     random_number = time_str[-7:]
     return code + random_number
@@ -22,7 +22,7 @@ def get_test_data_from_json(test_data_file_name: str) -> dict:
     return test_data
 
 
-def expected_thanks_text(name):
+def expected_thanks_text(name: str) -> str:
     first_name = name[:name.index(' ')]
     expected_text = 'Thank you ' + first_name + ', your contractor QA company will call soon!'
     return expected_text

@@ -140,18 +140,15 @@ def test_get_estimate_invalid_phone_number(driver: WebDriver, logger: Logger, te
 
 
 def test_zip_without_contractors(driver: WebDriver, logger: Logger):
-    zip_code = 10000
-    email = 'test@test.test'
+    data_zip: dict = get_test_data_from_json(os.path.join(
+        os.path.dirname(__file__),
+        "data_zip_without_contractors.json"))
 
     home_page: HomePage = HomePage(driver, logger)
 
-    logger.info(f'Fill zip_code {zip_code} and go further')
-    home_page.fill_zip_code(zip_code)
+    logger.info(f'Fill zip_code {data_zip["zip_code"]} and go further')
+    home_page.fill_zip_code(data_zip["zip_code"])
     no_contractors_form = home_page.submit_zip_code_no_contractors()
-    no_contractors_form.fill_email(email)
+    no_contractors_form.fill_email(data_zip["email"])
     no_contractors_form.click_next_button()
-    assert no_contractors_form.get_header_text() == ('Thank you for your interest, we will contact you'
-                                                     ' when our service becomes available in your area!')
-
-
-
+    assert no_contractors_form.get_header_text() == data_zip["expected_header_text"]

@@ -14,4 +14,3 @@ class BasePage:
         self.logger.info(f"Wait for {element_locator} to be visible")
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(element_locator))
         self.logger.info("Element is located")
-

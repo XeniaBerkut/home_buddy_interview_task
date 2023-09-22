@@ -1,10 +1,12 @@
-from selenium.webdriver.common.by import By
+from logging import Logger
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.webdriver import WebDriver
 from src.ui.pages.base_page import BasePage
 
 
 class NoContractorsForm(BasePage):
-    def __init__(self, driver, logger):
+    def __init__(self, driver: WebDriver, logger: Logger):
         super().__init__(driver, logger)
 
     locators = {
@@ -16,13 +18,13 @@ class NoContractorsForm(BasePage):
         'try_button': (By.XPATH, "//span[contains(text(),'Try another ZIP Code')]")
     }
 
-    def fill_email(self, email):
+    def fill_email(self, email: str):
         self.wait_element_is_located(self.locators['no_contractors_text'])
         self.driver.find_element(*self.locators['email']).send_keys(email)
 
     def click_next_button(self):
         self.driver.find_element(*self.locators['submit']).click()
 
-    def get_header_text(self):
+    def get_header_text(self) -> str:
         self.wait_element_is_located(self.locators['try_button'])
         return self.driver.find_element(*self.locators['header']).text
