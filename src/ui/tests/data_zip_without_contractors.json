@@ -1,0 +1,5 @@
+{
+  "zip_code": 10000,
+  "email": "test@test.test",
+  "expected_header_text": "Thank you for your interest, we will contact you when our service becomes available in your area!"
+}
